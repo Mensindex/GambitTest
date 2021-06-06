@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="24dp"
-    android:paddingBottom="24dp">
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
 
     <ImageView
         android:id="@+id/imageViewDish"
@@ -33,14 +33,14 @@
     <FrameLayout
         android:id="@+id/price"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:background="@color/priceback1"
+        android:background="@drawable/corner_radius"
         android:paddingStart="12dp"
-        android:paddingTop="8dp"
+        android:paddingTop="6dp"
         android:paddingEnd="12dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="2dp"
         app:layout_constraintStart_toEndOf="@+id/imageViewDish"
         app:layout_constraintTop_toBottomOf="@+id/textViewDishName">
 
@@ -57,9 +57,9 @@
         android:id="@+id/imageViewMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/price"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewCount"
         app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
         app:srcCompat="@drawable/ic_svgminus" />
 
@@ -67,15 +67,12 @@
         android:id="@+id/textViewCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="12dp"
         android:fontFamily="@font/sfprodisplaysemibold"
         android:text="1"
         android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/imageViewPlus"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageViewMinus"
         app:layout_constraintTop_toBottomOf="@+id/textViewDishName" />
 
     <ImageView
@@ -87,5 +84,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
         app:srcCompat="@drawable/ic_svgplus" />
+
+    <ImageView
+        android:id="@+id/imageViewCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
+        app:srcCompat="@drawable/ic_svgcart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

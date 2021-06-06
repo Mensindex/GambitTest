@@ -46,12 +46,13 @@ public class DishModelAdapter extends RecyclerView.Adapter<DishModelAdapter.View
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageViewDish, imageViewMinus, imageViewPlus;
+        private ImageView imageViewDish, imageViewMinus, imageViewPlus, imageViewCart;
         private TextView dishName, dishPrice, dishCount;
 
         ViewHolder(View view) {
             super(view);
             imageViewDish = view.findViewById(R.id.imageViewDish);
+            imageViewCart = view.findViewById(R.id.imageViewCart);
             imageViewMinus = view.findViewById(R.id.imageViewMinus);
             imageViewPlus = view.findViewById(R.id.imageViewPlus);
             dishName = view.findViewById(R.id.textViewDishName);
@@ -62,11 +63,18 @@ public class DishModelAdapter extends RecyclerView.Adapter<DishModelAdapter.View
         public void bind(DishModel dishModel) {
 
             dishModel.setCount(getCountById(dishModel.getId()));
+
             if (dishModel.getCount() > 0) {
                 dishCount.setVisibility(View.VISIBLE);
+                imageViewMinus.setVisibility(View.VISIBLE);
+                imageViewPlus.setVisibility(View.VISIBLE);
+                imageViewCart.setVisibility(View.INVISIBLE);
                 dishCount.setText(String.valueOf(dishModel.getCount()));
             } else {
                 dishCount.setVisibility(View.INVISIBLE);
+                imageViewMinus.setVisibility(View.INVISIBLE);
+                imageViewPlus.setVisibility(View.INVISIBLE);
+                imageViewCart.setVisibility(View.VISIBLE);
             }
 
             Glide.with(itemView.getContext())
@@ -74,7 +82,13 @@ public class DishModelAdapter extends RecyclerView.Adapter<DishModelAdapter.View
                     .into(imageViewDish);
 
             dishName.setText(dishModel.getName());
-            dishPrice.setText(dishModel.getPrice());
+            dishPrice.setText(String.valueOf(dishModel.getPrice()));
+
+            imageViewCart.setOnClickListener(v -> {
+                dishModel.setCount(dishModel.getCount() + 1);
+                saveCountById(dishModel.getId(), dishModel.getCount());
+                notifyItemChanged(getAdapterPosition(), new Object());
+            });
 
             imageViewPlus.setOnClickListener(v -> {
                 dishModel.setCount(dishModel.getCount() + 1);
