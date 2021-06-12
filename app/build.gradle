@@ -39,6 +39,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 
+    //Rambler swipe-layout
+    implementation 'ru.rambler.android:swipe-layout:1.1.0'
+
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
