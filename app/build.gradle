@@ -40,7 +40,12 @@ dependencies {
 
 
     //Rambler swipe-layout
-    implementation 'ru.rambler.android:swipe-layout:1.1.0'
+    //implementation 'ru.rambler.android:swipe-layout:1.1.0'
+
+    //Daimajia swipe-layout
+    compile 'androidx.recyclerview:recyclerview:1.0.0'
+    compile 'androidx.legacy:legacy-support-v4:1.0.0'
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

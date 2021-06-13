@@ -1,98 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mySwipe"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="12dp"
-    android:paddingBottom="12dp">
+    app:clickToClose="true">
 
-    <ImageView
-        android:id="@+id/imageViewDish"
-        android:layout_width="148dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dishimage" />
+    <LinearLayout
+        android:id="@+id/bottom_wrapper"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:background="#F5F5F5"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-    <TextView
-        android:id="@+id/textViewDishName"
-        android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imageViewFavOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_svgfavon" />
+
+            <ImageView
+                android:id="@+id/imageViewFavOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_svgfavoff" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/sfprodisplayregular"
-        android:text="Паста «Лючия»"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageViewDish"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp">
 
-    <FrameLayout
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/corner_radius"
-        android:paddingStart="12dp"
-        android:paddingTop="6dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="2dp"
-        app:layout_constraintStart_toEndOf="@+id/imageViewDish"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDishName">
+        <ImageView
+            android:id="@+id/imageViewDish"
+            android:layout_width="148dp"
+            android:layout_height="148dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/dishimage" />
 
         <TextView
-            android:id="@+id/textViewPrice"
+            android:id="@+id/textViewDishName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/sfprodisplayregular"
+            android:text="Паста «Лючия»"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDish"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/corner_radius"
+            android:paddingStart="12dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDish"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDishName">
+
+            <TextView
+                android:id="@+id/textViewPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfprodisplaysemibold"
+                android:text="450 ₽"
+                android:textColor="@color/black" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imageViewMinus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/textViewCount"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
+            app:srcCompat="@drawable/ic_svgminus" />
+
+        <TextView
+            android:id="@+id/textViewCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="12dp"
             android:fontFamily="@font/sfprodisplaysemibold"
-            android:text="450 ₽"
-            android:textColor="@color/black" />
-    </FrameLayout>
+            android:text="1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewPlus"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDishName" />
 
-    <ImageView
-        android:id="@+id/imageViewMinus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/textViewCount"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
-        app:srcCompat="@drawable/ic_svgminus" />
+        <ImageView
+            android:id="@+id/imageViewPlus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
+            app:srcCompat="@drawable/ic_svgplus" />
 
-    <TextView
-        android:id="@+id/textViewCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="12dp"
-        android:fontFamily="@font/sfprodisplaysemibold"
-        android:text="1"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewPlus"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDishName" />
+        <ImageView
+            android:id="@+id/imageViewCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
+            app:srcCompat="@drawable/ic_svgcart" />
 
-    <ImageView
-        android:id="@+id/imageViewPlus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
-        app:srcCompat="@drawable/ic_svgplus" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/imageViewCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDishName"
-        app:srcCompat="@drawable/ic_svgcart" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.daimajia.swipe.SwipeLayout>
